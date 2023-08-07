@@ -1,7 +1,8 @@
 import React from 'react'
 import './ResultTable.css'
     
-const ResultTable = () => {
+const ResultTable = (props) => {
+  console.log(props.data);
   return (
     <table className="result">
     <thead>
