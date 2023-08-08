@@ -59,7 +59,7 @@ const FinanceForm = (props) => {
             type="number"
             id="expected-return"
             onChange={(e) => handleChange(e.target.id, e.target.value)}
-            value={userInput['expecter-return']}
+            value={userInput['expected-return']}
           />
         </p>
         <p>

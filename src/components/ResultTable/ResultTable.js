@@ -3,6 +3,11 @@ import './ResultTable.css'
     
 const ResultTable = (props) => {
   console.log(props.data);
+
+  const renderedResults = props.data.map((line) => 
+     <tr><td>{line.year}</td></tr>
+  )
+  console.log(renderedResults);
   return (
     <table className="result">
     <thead>
@@ -15,13 +20,8 @@ const ResultTable = (props) => {
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <td>YEAR NUMBER</td>
-        <td>TOTAL SAVINGS END OF YEAR</td>
-        <td>INTEREST GAINED IN YEAR</td>
-        <td>TOTAL INTEREST GAINED</td>
-        <td>TOTAL INVESTED CAPITAL</td>
-      </tr>
+
+        {renderedResults}
     </tbody>
   </table>
   )
