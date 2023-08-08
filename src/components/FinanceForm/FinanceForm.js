@@ -10,13 +10,18 @@ const FinanceForm = (props) => {
     'duration':10,
   }
 
-  const submitForm = (event) => {
+  // handle form submission
+  const handleSubmit = (event) => {
     event.preventDefault();
-    props.calculateHandler(userInput);
+    props.calculateData(userInput);
+  }
+
+  // handle click of reset button - i.e. clear form
+  const handleReset = (event) => {
   }
 
   return (
-    <form className="form" onSubmit={submitForm}>
+    <form className="form" onSubmit={handleSubmit}>
         <div className="input-group">
           <p>
             <label htmlFor="current-savings">Current Savings ($)</label>
@@ -40,7 +45,7 @@ const FinanceForm = (props) => {
           </p>
         </div>
         <p className="actions">
-          <button type="reset" className="buttonAlt">
+          <button type="reset" className="buttonAlt" onClick={handleReset}>
             Reset
           </button>
           <button type="submit" className="button">

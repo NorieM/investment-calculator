@@ -1,7 +1,8 @@
 import { useState } from "react";
-import logo from "./assets/investment-calculator-logo.png";
+
 import FinanceForm from "./components/FinanceForm/FinanceForm";
 import ResultTable from "./components/ResultTable/ResultTable";
+import Header from "./components/Header/Header";
 
 function App() {
   const [data, setData] = useState([]);
@@ -9,7 +10,6 @@ function App() {
   const calculateHandler = (userInput) => {
     // Should be triggered when form is submitted
     // You might not directly want to bind it to the submit event on the form though...
-    console.log("Handle Calculate");
     const yearlyData = []; // per-year results
 
     let currentSavings = +userInput["current-savings"]; // feel free to change the shape of this input object!
@@ -29,24 +29,20 @@ function App() {
         yearlyContribution: yearlyContribution,
       });
     }
-
     // do something with yearlyData ...
     setData(yearlyData);
   };
 
   return (
     <div>
-      <header className="header">
-        <img src={logo} alt="logo" />
-        <h1>Investment Calculator</h1>
-      </header>
+      <Header />
 
-      <FinanceForm calculateHandler={calculateHandler}></FinanceForm>
+      <FinanceForm calculateData={calculateHandler} />
 
       {/* Todo: Show below table conditionally (only once result data is available) */}
       {/* Show fallback text if no data is available */}
 
-      {data.length !== 0 && <ResultTable data={data}></ResultTable>}
+      {data.length !== 0 && <ResultTable data={data} />}
     </div>
   );
 }
