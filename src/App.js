@@ -5,11 +5,13 @@ import ResultTable from "./components/ResultTable/ResultTable";
 import Header from "./components/Header/Header";
 
 function App() {
-  const [data, setData] = useState([]);
+  
+  const [result, setResult] = useState([])
 
   const calculateHandler = (userInput) => {
     // Should be triggered when form is submitted
     // You might not directly want to bind it to the submit event on the form though...
+    console.log("Calculate");
     const yearlyData = []; // per-year results
 
     let currentSavings = +userInput["current-savings"]; // feel free to change the shape of this input object!
@@ -30,7 +32,7 @@ function App() {
       });
     }
     // do something with yearlyData ...
-    setData(yearlyData);
+    setResult(yearlyData);
   };
 
   return (
@@ -42,7 +44,7 @@ function App() {
       {/* Todo: Show below table conditionally (only once result data is available) */}
       {/* Show fallback text if no data is available */}
 
-      {data.length !== 0 && <ResultTable data={data} />}
+      {result.length !== 0 && <ResultTable data={result} />}
     </div>
   );
 }
