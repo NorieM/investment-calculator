@@ -2,9 +2,15 @@ import React from "react";
 import { useState } from "react";
 import "./FinanceForm.css";
 
-const FinanceForm = (props) => {
+const initialUserInput = {
+    "current-savings": 10000,
+    "yearly-contribution": 1200,
+    "expected-return": 7,
+    duration: 10,
+  }
 
-  const [userInput, setUserInput] = useState({});
+const FinanceForm = (props) => {
+  const [userInput, setUserInput] = useState(initialUserInput);
 
   // handle form submission
   const handleSubmit = (event) => {
@@ -14,13 +20,12 @@ const FinanceForm = (props) => {
 
   // handle click of reset button - i.e. clear form
   const handleReset = (event) => {
-    console.log("Reset");
+    setUserInput(initialUserInput);
   };
 
   // handle change in form inputs
   const handleChange = (input, value) => {
-    console.log(input);
-    console.log(value);
+    setUserInput((prev) => ({ ...prev, [input]: value }));
   };
 
   return (
@@ -32,6 +37,7 @@ const FinanceForm = (props) => {
             type="number"
             id="current-savings"
             onChange={(e) => handleChange(e.target.id, e.target.value)}
+            value={userInput['current-savings']}
           />
         </p>
         <p>
@@ -40,6 +46,7 @@ const FinanceForm = (props) => {
             type="number"
             id="yearly-contribution"
             onChange={(e) => handleChange(e.target.id, e.target.value)}
+            value={userInput['yearly-contribution']}
           />
         </p>
       </div>
@@ -52,6 +59,7 @@ const FinanceForm = (props) => {
             type="number"
             id="expected-return"
             onChange={(e) => handleChange(e.target.id, e.target.value)}
+            value={userInput['expecter-return']}
           />
         </p>
         <p>
@@ -60,6 +68,7 @@ const FinanceForm = (props) => {
             type="number"
             id="duration"
             onChange={(e) => handleChange(e.target.id, e.target.value)}
+            value={userInput['duration']}
           />
         </p>
       </div>
