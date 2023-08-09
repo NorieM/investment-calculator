@@ -5,8 +5,8 @@ import "./FinanceForm.css";
 const initialUserInput = {
     "current-savings": 10000,
     "yearly-contribution": 1200,
-    "expected-return": 7,
-    duration: 10,
+    "expected-return": 5,
+    duration: 15,
   }
 
 const FinanceForm = (props) => {
@@ -15,7 +15,7 @@ const FinanceForm = (props) => {
   // handle form submission
   const handleSubmit = (event) => {
     event.preventDefault();
-    props.calculateData(userInput);
+    props.onCalculate(userInput);
   };
 
   // handle click of reset button - i.e. clear form
