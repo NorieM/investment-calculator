@@ -37,7 +37,7 @@ function App() {
     <div>
       <Header />
       <FinanceForm onCalculate={calculateHandler} />
-      {!userInput && <p>Results will appear here.</p>}
+      {!userInput && <p style={{textAlign: 'center'}}>Results will appear here.</p>}
       {userInput && <ResultTable data={yearlyData} initialInvestment={userInput['current-savings']}/>}
     </div>
   );
